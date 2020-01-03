@@ -1,0 +1,12 @@
+{
+    "restartable": "rs",
+    "ignore": [".git", "node_modules/**/node_modules", "dev", "public"],
+    "verbose": true,
+    "watch": ["./"],
+    "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000,
+        "MONGO_URL": "mongodb://localhost:27017/blog"
+    },
+    "ext": "js json"
+}

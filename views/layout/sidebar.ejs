@@ -1,0 +1,53 @@
+<div class="sidebar">
+    <div class="box auth">
+        <% if(!user.id && !user.login) {%>
+            <form method="post" class="signin">
+                <h2>Вход</h2>
+                <div class="form-group">
+                    <label for="signin-login">Логин</label>
+                    <input type="text" id="signin-login" name="login" />
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">Пароль</label>
+                    <input type="password" id="signin-password" name="password" />
+                </div>
+                <div class="buttons">
+                    <button class="signin-button">Войти</button>
+                    <button class="switch-button secondary">Регистрация</button>
+                </div>
+            </form>
+
+            <form method="post" class="signup">
+                <h2>Регистрация</h2>
+                <div class="form-group">
+                    <label for="signup-login">Логин</label>
+                    <input type="text" id="signup-login" name="login" />
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Пароль</label>
+                    <input type="password" id="signup-password" name="password" />
+                </div>
+                <div class="form-group">
+                    <label for="signup-password-confirm">Повторите пароль</label>
+                    <input type="password" id="signup-password-confirm" name="passwordConfirm" />
+                </div>
+                <div class="buttons">
+                    <button class="signup-button">Зарегестрироваться</button>
+                    <button class="switch-button secondary">Войти</button>
+                </div>
+            </form>
+            <% } else {%>
+                <ul>
+                    <li>
+                        Привет,
+                        <%= user.login %>!
+                    </li>
+                    <li><a href="/post/add">добавить пост</a></li>
+                    <li><a href="/api/auth/logout">Выход</a></li>
+                </ul>
+            <%}%>
+    </div>
+    <div class="box">
+        box
+    </div>
+</div>
