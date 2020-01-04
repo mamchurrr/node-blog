@@ -13,19 +13,21 @@ const routes = require('./routes');
 
 mongoose.Promise = global.Promise;
 mongoose.set('debug', config.IS_PRODUCTION);
-mongoose.connection
-    .on('error', error => console.error(error))
-    .on('close', () => console.log('DB connection closed!'))
-    .on('open', () => {
-        const info = mongoose.connections[0];
-        console.log(`Connect to ${info.host}:${info.port}/${info.name}`);
-        // require('./mocks')();
-    });
+
 mongoose.connect(config.MONGO_URL, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useUnifiedTopology: true
 });
+
+mongoose.connection
+    .on('error', error => console.error(error))
+    .on('close', () => console.log('DB connection closed!'))
+    .once('open', () => {
+        const info = mongoose.connections[0];
+        console.log(`Connect to ${info.host}:${info.port}/${info.name}`);
+        // require('./mocks')();
+    });
 
 //express
 const app = express();
