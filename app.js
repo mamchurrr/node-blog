@@ -14,19 +14,11 @@ const routes = require('./routes');
 mongoose.Promise = global.Promise;
 mongoose.set('debug', config.IS_PRODUCTION);
 
-// mongoose.connect(config.MONGO_URL, {
-//     useNewUrlParser: true,
-//     useFindAndModify: false,
-//     useUnifiedTopology: true
-// });
-
-mongoose.connect(
-    'mongodb+srv://mamchurrr:1q2w3e4r5t@cluster0-p9awi.mongodb.net/test?retryWrites=true&w=majority', {
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true
-    }
-);
+mongoose.connect(config.MONGO_URL, {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+});
 
 mongoose.connection
     .on('error', error => console.error(error))
